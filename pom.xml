@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.chelsea</groupId>
+	<artifactId>sso</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>sso</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<cas.version>5.1.0</cas.version>
+		<springboot.version>1.5.3.RELEASE</springboot.version>
+		<mysql.version>5.1.42</mysql.version>
+		<sringcloud.config.version>1.4.3.RELEASE</sringcloud.config.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<id>maven2-release</id>
+			<url>http://uk.maven.org/maven2/</url>
+		</repository>
+
+	</repositories>
+
+	<modules>
+		<module>sso-server</module>
+		<module>sso-config</module>
+	</modules>
+</project>
