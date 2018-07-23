@@ -40,5 +40,6 @@
     <module>sso-shiro</module>
     <module>sso-rest</module>
     <module>sso-rest-client</module>
+    <module>sso-service-json</module>
   </modules>
 </project>
