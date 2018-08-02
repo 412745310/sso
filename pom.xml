@@ -41,5 +41,6 @@
     <module>sso-rest</module>
     <module>sso-rest-client</module>
     <module>sso-service-json</module>
+    <module>sso-cas-client</module>
   </modules>
 </project>
