@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.chelsea</groupId>
@@ -21,6 +22,9 @@
 		<mysql.version>5.1.42</mysql.version>
 		<sringcloud.config.version>1.4.3.RELEASE</sringcloud.config.version>
 		<com.alibaba.druid>1.1.1</com.alibaba.druid>
+		<buji.version>3.0.0</buji.version>
+		<pac4j.version>2.1.0</pac4j.version>
+		<shiro.version>1.4.0</shiro.version>
 	</properties>
 
 	<repositories>
@@ -37,10 +41,11 @@
 	<modules>
 		<module>sso-server</module>
 		<module>sso-config</module>
-    <module>sso-shiro</module>
-    <module>sso-rest</module>
-    <module>sso-rest-client</module>
-    <module>sso-service-json</module>
-    <module>sso-cas-client</module>
-  </modules>
+		<module>sso-shiro</module>
+		<module>sso-rest</module>
+		<module>sso-rest-client</module>
+		<module>sso-service-json</module>
+		<module>sso-cas-client</module>
+		<module>sso-pac4j</module>
+	</modules>
 </project>
