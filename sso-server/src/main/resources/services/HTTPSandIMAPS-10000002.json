@@ -1,0 +1,10 @@
+{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|http|imaps)://.*",
+  "name" : "HTTPS and IMAPS",
+  "id" : 10000002,
+  "description" : "This service definition authorizes all application urls that support HTTPS and IMAPS protocols.",
+  "evaluationOrder" : 20000,
+  "theme":"demo",
+  "logoutUrl": "http://localhost:18080/sso-cas-client/index.jsp"
+}
