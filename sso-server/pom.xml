@@ -17,6 +17,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.apereo.cas</groupId>
+			<artifactId>cas-server-support-pac4j-webflow</artifactId>
+			<version>${cas.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apereo.cas</groupId>
 			<artifactId>cas-server-webapp-tomcat</artifactId>
 			<version>${cas.version}</version>
 			<type>war</type>
@@ -39,6 +44,11 @@
 			<version>${cas.version}</version>
 			<type>pom</type>
 			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apereo.cas</groupId>
+			<artifactId>cas-server-support-rest</artifactId>
+			<version>${cas.version}</version>
 		</dependency>
 	</dependencies>
 
