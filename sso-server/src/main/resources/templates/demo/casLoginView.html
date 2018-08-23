@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--
-  ~ 版权所有.(c)2008-2017.卡尔科技工作室
-  -->
 <html>
 <head>
     <meta charset="UTF-8"/>
@@ -46,6 +43,22 @@
                        th:accesskey="#{screen.welcome.label.password.accesskey}"
                        th:field="*{password}"
                        autocomplete="off"/>
+            </div>
+        </section>
+
+        <section class="row">
+            <label for="system" >系统</label>
+            <div>
+                <select class="required"
+                        id="system"
+                        tabindex="2"
+                        th:accesskey="#{screen.welcome.label.password.accesskey}"
+                        th:field="*{system}"
+                        autocomplete="off">
+                    <option value="sso">SSO</option>
+                    <option value="oa">OA</option>
+                    <option value="crm">CRM</option>
+                </select>
             </div>
         </section>
 
