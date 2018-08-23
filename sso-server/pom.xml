@@ -50,6 +50,17 @@
 			<artifactId>cas-server-support-rest</artifactId>
 			<version>${cas.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apereo.cas</groupId>
+			<artifactId>cas-server-core-webflow</artifactId>
+			<version>${cas.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apereo.cas</groupId>
+			<artifactId>cas-server-webapp-config</artifactId>
+			<version>${cas.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
