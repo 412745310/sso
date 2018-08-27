@@ -6,5 +6,8 @@
   "description" : "This service definition authorizes all application urls that support HTTPS and IMAPS protocols.",
   "evaluationOrder" : 10000,
   "theme":"demo",
-  "logoutUrl": "http://localhost:8080/sso-cas-client/index.jsp"
+  "logoutUrl": "http://localhost:8080/sso-cas-client/index.jsp",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
+  }
 }
