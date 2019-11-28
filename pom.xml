@@ -49,5 +49,6 @@
 		<module>sso-service-json</module>
 		<module>sso-cas-client</module>
     <module>sso-jwt</module>
-  </modules>
+    <module>sso-security-cas</module>
+	</modules>
 </project>
