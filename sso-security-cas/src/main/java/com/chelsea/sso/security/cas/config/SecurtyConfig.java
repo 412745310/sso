@@ -1,7 +1,7 @@
 package com.chelsea.sso.security.cas.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,6 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+/**
+ * spring security配置类
+ */
 @EnableWebSecurity
 public class SecurtyConfig extends WebSecurityConfigurerAdapter {
     
@@ -46,15 +49,22 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
      * @param auth
      * @throws Exception
      */
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                // 认证信息存储到内存中
-                .passwordEncoder(passwordEncoder()).withUser("admin").password(passwordEncoder().encode("123456"))
-                .roles("ADMIN");
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                // 认证信息存储到内存中
+//                .passwordEncoder(passwordEncoder()).withUser("admin").password(passwordEncoder().encode("123456"))
+//                .roles("ADMIN");
+//    }
 
-    private PasswordEncoder passwordEncoder() {
+    /**
+     * 加密方法
+     * 常规情况下，passwordEncoder.encode("123123")是注册时需要做的方法
+     * 而登录的时候则只需要传递password即可
+     * @return
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
