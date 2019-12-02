@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>登录页面</title>
+	<!--#include virtual="root.jsp"  -->
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<!--#include virtual="login.jsp"  -->
+</body>
+</html>
