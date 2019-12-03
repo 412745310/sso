@@ -21,13 +21,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultAuthenticationFailureHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultAuthenticationFailureHandler.class);
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException, ServletException {
-        LOGGER.info("login in failure : " + exception.getMessage());
-        request.getSession().setAttribute("message", "login in failure");
+        LOG.info("login in failure : {}", exception.getMessage());
         response.sendRedirect(request.getContextPath() + "/loginError");
     }
 
