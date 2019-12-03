@@ -21,11 +21,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultAuthenticationSuccessHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultAuthenticationSuccessHandler.class);
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        LOGGER.info("----login in succcess----");
+        LOG.info("----login in succcess----");
         request.setAttribute("message", "login in success");
         response.sendRedirect(request.getContextPath() + "/main");
     }
