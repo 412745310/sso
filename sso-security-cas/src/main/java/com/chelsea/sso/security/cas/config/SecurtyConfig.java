@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.chelsea.sso.security.cas.handler.DefaultLogoutSuccessHandler;
+
 /**
  * spring security配置类
  */
@@ -29,7 +31,7 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().formLogin() // 基于Form表单登录验证
+        http.formLogin() // Form表单登录配置
                 .loginPage("/login") // 自定义登录页面
                 .defaultSuccessUrl("/main") // 自定义登录成功页面
                 .failureUrl("/loginError") // 自定义登录失败界面
@@ -37,10 +39,20 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password") // 自定义登录密码参数名
 //                .successHandler(defaultAuthenticationSuccessHandler) // 自定义认证成功处理类（此设置会让defaultSuccessUrl失效）
                 .failureHandler(defaultAuthenticationFailureHandler) // 自定义认证失败处理类
-                .and().authorizeRequests() 
+                
+                .and().authorizeRequests() // 授权配置  
                 .antMatchers("/css/**", "/js/**", "/fonts/**", "/login", "/loginError", "/**/login.shtml").permitAll() // 不需要登录都可以访问
                 .antMatchers("/admin/**").hasRole("ADMIN") // 不仅需要登录而且需要相应的角色才能访问
-                .anyRequest().authenticated(); // 其他资源都需要登录才能访问
+                .anyRequest().authenticated() // 其他资源都需要登录才能访问
+                
+                .and().logout() // 登录退出配置
+                .logoutUrl("logout") // 自定义退出配置页面（此设置会让addLogoutHandler和logoutSuccessHandler失效）
+//                .addLogoutHandler(new DefaultLogoutHandler()) // 自定义退出处理类
+                .logoutSuccessHandler(new DefaultLogoutSuccessHandler()) // 自定义退出成功处理类
+//                .logoutSuccessUrl("/logout") // 退出成功后跳转的页面
+                .deleteCookies("JSESSIONID")    // 退出时要删除的Cookies的名字
+                
+                .and().csrf().disable(); // 取消CSRF
     }
 
     /**
