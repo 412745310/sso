@@ -15,12 +15,12 @@ public class LoginController {
     
     @RequestMapping("/loginError")
     public String loginError(HttpServletRequest request) {
-        request.getSession().setAttribute("message", "login in failure");
         return "redirect:/page/login.shtml";
     }
     
     @RequestMapping("/logout")
-    public String logout() {
+    public String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
         return "redirect:/page/login.shtml";
     }
     
