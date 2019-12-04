@@ -9,7 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.chelsea.sso.security.cas.filter.ValidationCodeFilter;
 import com.chelsea.sso.security.cas.handler.DefaultLogoutSuccessHandler;
 
 /**
@@ -31,7 +33,9 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin() // Form表单登录配置
+        
+        http.addFilterBefore(new ValidationCodeFilter(), UsernamePasswordAuthenticationFilter.class)
+                .formLogin() // Form表单登录配置
                 .loginPage("/login") // 自定义登录页面
                 .defaultSuccessUrl("/main") // 自定义登录成功页面
                 .failureUrl("/loginError") // 自定义登录失败界面
@@ -41,7 +45,7 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(defaultAuthenticationFailureHandler) // 自定义认证失败处理类
                 
                 .and().authorizeRequests() // 授权配置  
-                .antMatchers("/css/**", "/js/**", "/fonts/**", "/login", "/loginError", "/**/login.shtml").permitAll() // 不需要登录都可以访问
+                .antMatchers("/css/**", "/js/**", "/fonts/**", "/login", "/loginError", "/**/login.shtml", "/logout").permitAll() // 不需要登录都可以访问
                 .antMatchers("/admin/**").hasRole("ADMIN") // 不仅需要登录而且需要相应的角色才能访问
                 .anyRequest().authenticated() // 其他资源都需要登录才能访问
                 
@@ -50,7 +54,7 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
 //                .addLogoutHandler(new DefaultLogoutHandler()) // 自定义退出处理类
                 .logoutSuccessHandler(new DefaultLogoutSuccessHandler()) // 自定义退出成功处理类
 //                .logoutSuccessUrl("/logout") // 退出成功后跳转的页面
-                .deleteCookies("JSESSIONID")    // 退出时要删除的Cookies的名字
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID")    // 退出时要删除的Cookies的名字
                 
                 .and().csrf().disable(); // 取消CSRF
     }
