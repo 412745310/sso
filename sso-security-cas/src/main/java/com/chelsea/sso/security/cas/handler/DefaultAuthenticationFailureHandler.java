@@ -27,6 +27,7 @@ public class DefaultAuthenticationFailureHandler extends SimpleUrlAuthentication
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException, ServletException {
         LOG.info("login in failure : {}", exception.getMessage());
+        request.getSession().setAttribute("message", "login in failure");
         response.sendRedirect(request.getContextPath() + "/loginError");
     }
 
