@@ -20,6 +20,12 @@
 	            <span>密码：</span>
 	            <input type="password" name="password" />
 	        </label>
+	        <br/>
+	        <label>
+	            <span>验证码：</span>
+	            <input type="text" name="verifyCode" />
+	        </label>
+	        <br/>
 	        <input type="button" value="登录" onclick="login()"/>
 	    </form>
 	    ${sessionScope.message}

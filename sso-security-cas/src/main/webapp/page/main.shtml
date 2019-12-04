@@ -1,1 +1,16 @@
-hello world
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!--#include virtual="root.jsp"  -->
+		<script>
+			function logout() {
+				window.location.href= ctxPaths + "/logout";
+			}
+		</script>
+	</head>
+	<body>
+			hello world<br>
+			<input type="button" value="注销" onclick="logout();"/>
+	</body>
+</html>
+
