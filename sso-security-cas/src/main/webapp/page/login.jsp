@@ -28,5 +28,5 @@
 	        <br/>
 	        <input type="button" value="登录" onclick="login()"/>
 	    </form>
-	    ${sessionScope.message}
+	    ${message}
 	</div>
