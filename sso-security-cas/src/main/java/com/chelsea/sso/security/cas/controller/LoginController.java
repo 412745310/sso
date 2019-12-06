@@ -18,6 +18,11 @@ public class LoginController {
         return "redirect:/page/login.shtml";
     }
     
+    @RequestMapping("/accessError")
+    public String accessError(HttpServletRequest request) {
+        return "redirect:/page/accessError.shtml";
+    }
+    
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();
@@ -26,7 +31,7 @@ public class LoginController {
     
     @RequestMapping("/main")
     public String main() {
-        return "redirect:/page/main.shtml";
+        return "main";
     }
-
+    
 }
