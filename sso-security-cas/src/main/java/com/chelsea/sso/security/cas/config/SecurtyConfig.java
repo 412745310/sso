@@ -1,6 +1,7 @@
 package com.chelsea.sso.security.cas.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.chelsea.sso.security.cas.filter.ValidationCodeFilter;
+import com.chelsea.sso.security.cas.handler.DefaultAccessDeniedHandler;
 import com.chelsea.sso.security.cas.handler.DefaultLogoutSuccessHandler;
 
 /**
@@ -45,9 +47,12 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(defaultAuthenticationFailureHandler) // 自定义认证失败处理类
                 
                 .and().authorizeRequests() // 授权配置  
-                .antMatchers("/css/**", "/js/**", "/fonts/**", "/login", "/loginError", "/**/login.shtml", "/logout").permitAll() // 不需要登录都可以访问
+                .antMatchers("/css/**", "/js/**", "/fonts/**", "/login", "/loginError", "/**/login.shtml", "/logout", "/accessError", "/**/accessError.shtml").permitAll() // 不需要登录都可以访问
                 .antMatchers("/admin/**").hasRole("ADMIN") // 不仅需要登录而且需要相应的角色才能访问
                 .anyRequest().authenticated() // 其他资源都需要登录才能访问
+                
+                .and().exceptionHandling() // 异常处理
+                .accessDeniedHandler(new DefaultAccessDeniedHandler()) // 自定义访问受限处理类
                 
                 .and().logout() // 登录退出配置
                 .logoutUrl("logout") // 自定义退出配置页面（此设置会让addLogoutHandler和logoutSuccessHandler失效）
@@ -82,6 +87,16 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    
+    /**
+     * 加载 ClassPathTldsLoader
+     * @return
+     */
+    @Bean
+    @ConditionalOnMissingBean(ClassPathTldsLoader.class)
+    public ClassPathTldsLoader classPathTldsLoader(){
+        return new ClassPathTldsLoader();
     }
 
 }
