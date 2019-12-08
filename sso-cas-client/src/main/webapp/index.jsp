@@ -9,7 +9,7 @@
 <body>
 <hr>
 
-<a href="https://passport.sso.com:8443/cas/logout?service=http://localhost:8080/sso-cas-client/index.jsp">logout</a>
+<a href="https://passport.sso.com/cas/logout?service=http://localhost:8080/sso-cas-client/index.jsp">logout</a>
 
 <p><b>Authenticated User Id:</b> <a href="logout.jsp" title="Click here to log out"><%= request.getRemoteUser() %>
 </a></p>
