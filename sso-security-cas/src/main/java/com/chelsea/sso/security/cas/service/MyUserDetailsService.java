@@ -32,7 +32,8 @@ public class MyUserDetailsService implements UserDetailsService {
     private List<MyUser> myUserList = Arrays.asList(
                 new MyUser("admin", "123456", new String[]{"ROLE_ADMIN", "ROLE_EMPLOYEE"}, 1),
                 new MyUser("employee", "123456", new String[]{"ROLE_EMPLOYEE"}, 1),
-                new MyUser("visitor", "123456", new String[]{"ROLE_VISITOR"}, 0)
+                new MyUser("visitor", "123456", new String[]{"ROLE_VISITOR"}, 0),
+                new MyUser("zhangsan", "123456", new String[]{"ROLE_VISITOR"}, 1)
             );
     
     @Autowired
