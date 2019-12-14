@@ -15,11 +15,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.apereo.cas</groupId>
-			<artifactId>cas-server-support-pac4j-webflow</artifactId>
-			<version>${cas.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apereo.cas</groupId> <artifactId>cas-server-support-pac4j-webflow</artifactId> 
+			<version>${cas.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.apereo.cas</groupId>
 			<artifactId>cas-server-webapp-tomcat</artifactId>
