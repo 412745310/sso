@@ -12,7 +12,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import sso.server.support.auth.handler.UsernamePasswordSystemAuthenticationHandler;
+import sso.server.support.auth.handler.MyPreAndPostProcessingAuthenticationHandler;
 
 /**
  * 注册AuthenticationHandler
@@ -35,11 +35,10 @@ public class CustomAuthenticationEventExecutionPlanConfiguration implements Auth
      */
     @Bean
     public AuthenticationHandler customAuthenticationHandler() {
-        // 优先验证
-        return new UsernamePasswordSystemAuthenticationHandler("customAuthenticationHandler", servicesManager,
+        return new MyPreAndPostProcessingAuthenticationHandler("myUsernamePasswordAuthenticationHandler", servicesManager,
                 jdbcPrincipalFactory, 1);
     }
-
+    
     // 注册自定义认证器
     @Override
     public void configureAuthenticationExecutionPlan(final AuthenticationEventExecutionPlan plan) {
